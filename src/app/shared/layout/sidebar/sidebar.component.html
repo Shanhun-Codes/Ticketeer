@@ -1,0 +1,15 @@
+<header class="container-border text-center">
+  <h1 class="m-3 text-4xl">{{ appInfo()!.title }}</h1>
+</header>
+<ul class="">
+  <li *ngFor="let item of sanitizedNavItems()" class="text-lg m-3">
+    <a
+      class="btn-hover flex items-center"
+      [routerLink]="item.route"
+      routerLinkActive="active"
+    >
+      <span [innerHTML]="item.icon" class="inline-block pr-[8px]"></span>
+      {{ item.label }}
+    </a>
+  </li>
+</ul>
