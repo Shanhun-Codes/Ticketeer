@@ -1,1 +1,12 @@
-<h2 class="text-3xl">Dashboard</h2>
+<section>
+    <div>
+        <h2 class="text-3xl p-[.5em]">Dashboard</h2>
+        <p *ngIf="loading()" class="motion-safe:animate-spin">Loading</p>
+        <div class="p-[.5em]">
+          <app-quick-info [statuses]="statuses()!" [tickets]="tickets()" />
+        </div>
+        <div class="p-[.5em] w-[100%]">
+          <app-ticket-table [tickets]="tickets()" />
+        </div>
+    </div>
+</section>

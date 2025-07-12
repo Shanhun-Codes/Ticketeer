@@ -18,3 +18,39 @@
 .container-border {
     @apply border border-solid border-gray-700
 }
+
+.status-open {
+    @apply text-green-400
+}
+.status-in-progress {
+     @apply text-yellow-300
+}
+.status-closed {
+     @apply text-blue-700
+}
+
+.priority-low {
+  @apply bg-green-100 text-green-800 font-semibold rounded-full px-3 py-0.5 inline-block leading-none shadow-md;
+}
+
+.priority-medium {
+  @apply bg-yellow-200 text-yellow-900 font-semibold rounded-full px-3 py-0.5 inline-block leading-none shadow-md;
+}
+
+.priority-high {
+  @apply bg-orange-300 text-orange-900 font-semibold rounded-full px-3 py-0.5 inline-block leading-none shadow-md;
+}
+
+.priority-critical {
+  @apply bg-red-400 text-white font-bold rounded-full px-3 py-0.5 inline-block leading-none shadow-lg;
+}
+
+.quickInfoBorder {
+    @apply p-[.5em] rounded-lg
+}
+
+@layer utilities {
+  :where(th, td) {
+    @apply px-2 py-1;
+  }
+}

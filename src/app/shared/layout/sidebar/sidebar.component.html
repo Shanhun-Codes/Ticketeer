@@ -1,8 +1,8 @@
 <header class="container-border text-center">
-  <h1 class="m-3 text-4xl">{{ appInfo()!.title }}</h1>
+  <h1 class="m-3 text-3xl">{{ (appInfo$! | async)!.title }}</h1>
 </header>
 <ul class="">
-  <li *ngFor="let item of sanitizedNavItems()" class="text-lg m-3">
+  <li *ngFor="let item of sanitizedNavItems | async" class="text-lg m-3">
     <a
       class="btn-hover flex items-center"
       [routerLink]="item.route"

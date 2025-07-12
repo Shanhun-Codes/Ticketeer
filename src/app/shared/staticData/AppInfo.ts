@@ -1,5 +1,5 @@
 export default {
-  title: 'Ticketeer',
+  title: 'Ticketeer. co',
   logoUrl: '/assets/logo.svg',
   companyName: 'Ticketeer Inc.',
   supportEmail: 'support@ticketeer.io',
