@@ -1,0 +1,9 @@
+.status-open {
+  @apply text-green-400;
+}
+.status-in-progress {
+  @apply text-yellow-300;
+}
+.status-closed {
+  @apply text-blue-700;
+}

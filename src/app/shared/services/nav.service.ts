@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { NavItem } from '../models/interfaces/navItem.model';
+import { NavItem } from '../models/navItems/navItem.model';
 import NAV_ITEMS from '../staticData/navItems';
 import { Observable, of } from 'rxjs';
 

@@ -6,8 +6,8 @@ import { AsyncPipe, NgFor } from '@angular/common';
 import { AppInfoService } from '../../services/app-info.service';
 import { map, Observable } from 'rxjs';
 import { DomSanitizer } from '@angular/platform-browser';
-import { AppInfo } from '../../models/interfaces/appInfo.model';
-import { NavItem } from '../../models/interfaces/navItem.model';
+import { AppInfo } from '../../models/appInfo/appInfo.model';
+import { NavItem } from '../../models/navItems/navItem.model';
 
 @Component({
   selector: 'app-sidebar',

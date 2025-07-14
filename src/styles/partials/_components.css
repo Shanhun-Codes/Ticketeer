@@ -1,0 +1,20 @@
+.btn-hover {
+  @apply border border-solid border-transparent rounded-md
+           hover:border-emerald-600 hover:bg-gray-700
+           hover:py-[4px] hover:px-[8px]
+           transition-all duration-200 ease-out md:ease-in;
+}
+
+.active {
+  @apply border border-solid border-transparent rounded-md
+           border-emerald-600 bg-gray-700
+           py-[4px] px-[8px];
+}
+
+.container-border {
+  @apply border border-solid border-gray-700;
+}
+
+.quickInfoBorder {
+  @apply p-[.5em] rounded-lg;
+}

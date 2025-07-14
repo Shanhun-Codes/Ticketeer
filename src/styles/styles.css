@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "./partials/_components.css";
+@import "./partials/_status.css";
+@import "./partials/_priority.css";
+
+@layer utilities {
+  :where(th, td) {
+    @apply px-2 py-1;
+  }
+}
