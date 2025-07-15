@@ -1,1 +1,47 @@
-<p>dynamic-form works!</p>
+<form
+  [formGroup]="form"
+  (ngSubmit)="onSubmit()"
+  class="grid grid-cols-1 md:grid-cols-2 gap-4"
+>
+  <ng-container *ngFor="let field of config.fields">
+    <div>
+      <label class="block font-medium mb-1">{{ field.label }}</label>
+
+      <input
+        *ngIf="field.type === 'text'"
+        [formControlName]="field.name"
+        class="form-field"
+      />
+
+      <textarea
+        *ngIf="field.type === 'textarea'"
+        [formControlName]="field.name"
+        class="form-field"
+      ></textarea>
+
+      <select
+        *ngIf="field.type === 'select'"
+        [formControlName]="field.name"
+        class="form-field"
+      >
+        <option *ngFor="let option of field.options || []" [value]="option.id">
+          {{ option.name }}
+        </option>
+      </select>
+
+      <div
+        *ngIf="
+          form.controls[field.name]?.invalid &&
+          form.controls[field.name]?.touched
+        "
+        class="text-red-500 text-sm mt-1"
+      >
+        {{ field.label }} is required
+      </div>
+    </div>
+  </ng-container>
+
+  <div class="md:col-span-2 mt-4">
+    <button type="submit" class="btn-hover">Submit</button>
+  </div>
+</form>

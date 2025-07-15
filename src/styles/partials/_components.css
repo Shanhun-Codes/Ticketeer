@@ -1,9 +1,48 @@
 .btn-hover {
-  @apply border border-solid border-transparent rounded-md
-           hover:border-emerald-600 hover:bg-gray-700
-           hover:py-[4px] hover:px-[8px]
-           transition-all duration-200 ease-out md:ease-in;
+  @apply bg-transparent
+    text-inherit
+    border border-transparent
+    rounded-md
+    transition-all
+    duration-200
+    ease-out md:ease-in;
 }
+
+.btn-hover:hover {
+  @apply border-emerald-600
+    bg-gray-700
+    text-white
+    py-[4px]
+    px-[8px];
+}
+
+button.btn-hover {
+  @apply bg-gray-600
+    text-white
+    border-gray-600
+    py-1
+    px-2;
+}
+
+.form-field {
+  @apply 
+    w-full
+    py-[0.5em]
+    px-3
+    bg-gray-800
+    text-white
+    rounded-lg
+    border
+    border-emerald-600
+    transition-all
+    duration-200
+    ease-out
+    focus:outline-none
+    focus:border-emerald-400
+    focus:bg-gray-700;
+}
+
+
 
 .active {
   @apply border border-solid border-transparent rounded-md

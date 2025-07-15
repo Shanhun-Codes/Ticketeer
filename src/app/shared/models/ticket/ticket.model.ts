@@ -1,4 +1,4 @@
-import { TicketPriority } from './types/priority.model';
+import { TicketPriority } from './interfaces/priority.model';
 import { TicketStatus } from './interfaces/status.model';
 
 export interface Ticket {
@@ -6,7 +6,7 @@ export interface Ticket {
   title: string;
   description: string;
   status: string;
-  priority: TicketPriority;
+  priority: string;
   createdDate: string;
   assignedUserId: number;  
   createdBy: number;      

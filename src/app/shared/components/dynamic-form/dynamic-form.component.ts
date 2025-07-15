@@ -1,21 +1,43 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { FormConfig } from '../../models/forms/interfaces/formConfig.model';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-dynamic-form',
   standalone: true,
+  imports: [ReactiveFormsModule, NgFor, NgIf],
   templateUrl: './dynamic-form.component.html',
-  styleUrls: ['./dynamic-form.component.css']
+  styleUrls: ['./dynamic-form.component.css'],
 })
-export class DynamicFormComponent implements OnInit{
-  @Input({required: true}) config!: FormConfig
+export class DynamicFormComponent implements OnInit {
+  fb = inject(FormBuilder);
+
+  @Input({ required: true }) config!: FormConfig;
+  form!: FormGroup;
 
   ngOnInit(): void {
-    console.log('Ticket Form config loaded:', this.config);
-    this.config.fields.forEach(field => {
-      console.log(`Preparing field: ${field.name}, Type: ${field.type}`);
+    this.config.fields.forEach((field) => {
     });
+    this.buildForm();
+    console.log(this.config);
+    
   }
- 
 
+  private buildForm() {
+    const group: Record<string, any> = {};
+    for (const field of this.config.fields) {
+      const validators = field.required ? [Validators.required] : [];
+      group[field.name] = ['', validators];
+    }
+    this.form = this.fb.group(group);
+  }
+
+  onSubmit() {
+    if (this.form.valid) {
+      console.log('✅ Form Submitted:', this.form.value);
+    } else {
+      console.log('❌ Form Invalid');
+    }
+  }
 }

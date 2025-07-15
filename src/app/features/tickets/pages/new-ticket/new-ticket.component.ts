@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject, computed } from '@angular/core';
 import { DynamicFormComponent } from '../../../../shared/components/dynamic-form/dynamic-form.component';
 import { FormConfig } from '../../../../shared/models/forms/interfaces/formConfig.model';
+import { GetOptionsDataService } from '../../../../shared/services/httpRequests/getOptionsData.service';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-new-ticket',
@@ -10,7 +12,35 @@ import { FormConfig } from '../../../../shared/models/forms/interfaces/formConfi
   imports: [DynamicFormComponent],
 })
 export class NewTicketComponent {
-  ticketFormConfig: FormConfig = {
+  getOptionsDataService = inject(GetOptionsDataService);
+  priorityOptionsData = toSignal(
+    this.getOptionsDataService.getPriotrityOptionsData(),
+    {
+      initialValue: [],
+    }
+  );
+  categoryOptionsData = toSignal(
+    this.getOptionsDataService.getCategoryOptionsData(),
+    {
+      initialValue: [],
+    }
+  );
+
+  assignedUserOptionsData = toSignal(
+    this.getOptionsDataService.getAssignedUserOtionsId(),
+    {
+      initialValue: [],
+    }
+  );
+
+  statusOptionsData = toSignal(
+    this.getOptionsDataService.getStatusOptionsData(),
+    {
+      initialValue: [],
+    }
+  );
+
+  ticketFormConfig = computed<FormConfig>(() => ({
     title: 'Create Ticket',
     fields: [
       { name: 'title', label: 'Title', type: 'text', required: true },
@@ -26,6 +56,10 @@ export class NewTicketComponent {
         type: 'select',
         required: true,
         optionsKey: 'priorities',
+        options: this.priorityOptionsData() as {
+          id: number | string;
+          name: string;
+        }[],
       },
       {
         name: 'status',
@@ -33,6 +67,10 @@ export class NewTicketComponent {
         type: 'select',
         required: true,
         optionsKey: 'statuses',
+        options: this.statusOptionsData() as {
+          id: number | string;
+          name: string;
+        }[],
       },
       {
         name: 'categoryId',
@@ -40,6 +78,10 @@ export class NewTicketComponent {
         type: 'select',
         required: true,
         optionsKey: 'categories',
+        options: this.categoryOptionsData() as {
+          id: number | string;
+          name: string;
+        }[],
       },
       {
         name: 'assignedUserId',
@@ -47,7 +89,11 @@ export class NewTicketComponent {
         type: 'select',
         required: true,
         optionsKey: 'users',
+        options: this.assignedUserOptionsData() as {
+          id: number | string;
+          name: string;
+        }[],
       },
     ],
-  };
+  }));
 }
