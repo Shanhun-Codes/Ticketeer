@@ -6,7 +6,8 @@
           <app-quick-info [statuses]="statuses()!" [tickets]="tickets()" />
         </div>
         <div class="p-[.5em] w-[100%]">
-          <app-ticket-table [tickets]="tickets()" />
+          <app-ticket-table [tickets]="sortedTickets()" />
         </div>
     </div>
 </section>
+

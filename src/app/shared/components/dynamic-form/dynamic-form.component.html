@@ -24,7 +24,7 @@
         [formControlName]="field.name"
         class="form-field"
       >
-        <option *ngFor="let option of field.options || []" [value]="option.id">
+        <option *ngFor="let option of field.options || []" [value]="option.name">
           {{ option.name }}
         </option>
       </select>

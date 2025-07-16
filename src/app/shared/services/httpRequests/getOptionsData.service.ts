@@ -28,4 +28,8 @@ export class GetOptionsDataService {
   getCategoryOptionsData() {
     return this.http.get(`${this.baseUrl}/categories`);
   }
+
+  getUserRoles() {
+    return this.http.get(`${this.baseUrl}/users`)
+  }
 }

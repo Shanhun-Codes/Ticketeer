@@ -17,11 +17,7 @@ export class DynamicFormComponent implements OnInit {
   form!: FormGroup;
 
   ngOnInit(): void {
-    this.config.fields.forEach((field) => {
-    });
-    this.buildForm();
-    console.log(this.config);
-    
+    this.buildForm();    
   }
 
   private buildForm() {
